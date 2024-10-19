@@ -1,6 +1,6 @@
-#Philosophers
+# Philosophers
 
-##Suject
+## Suject
 
 - the Philosophers alternatively eat, think, sleep;
 they are doing one thing at a time, they can't do two
@@ -15,7 +15,7 @@ waiting to eat, he simulation stop when a philo die of starvation
 about to die
 - Philosophers should avoid dying
 
-##Global rules
+## Global rules
 
 - write a program
 - no global variable (maybe use static)
@@ -43,7 +43,7 @@ continue until a philo die.
 - philo number 1 sits next to philo number number_of_philosophers, any 
 other philo number N sits between philo number N-1 & philo number N+1
 
-##Logs of the program : 
+## Logs of the program : 
 
 - any state change of a philo must be formatted as follows:
     - timestamp_in_ms X has taken a fork
