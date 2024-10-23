@@ -93,3 +93,19 @@ and a fork on their right side. If there is only one philo, there is
 only one fork on the table
 - to prevent philo from duplicating forks, you should protect the 
 fork state with a mutex for each of them
+
+
+
+## To do 
+
+- init the param
+- init the param of each philo
+- lauch the simulation
+    - set the time to start
+    - launch routine for each philo
+    - while simulation isn't finish
+        - check the nb of meal they have take 
+        - check if a philo is dead
+        - wait for 1 sec
+    - once it's finish, join all the threads
+- free all the malloc

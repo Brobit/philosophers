@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   arg_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:39:47 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/22 11:08:13 by almarico         ###   ########.fr       */
+/*   Created: 2024/10/22 11:02:53 by almarico          #+#    #+#             */
+/*   Updated: 2024/10/22 11:32:34 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-int	main(int argc, char **argv)
+int	check_args(char *arg)
 {
-	t_param	param;
-	int		i;
+	long	nb;
 
-	if (argc != 5 || argc != 6)
-		return (write_program_prompt(), FAIL);
-	i = 1;
-	while (i < argc)
+	if (!arg || *arg == '0' || *arg == '\0')
+		return (FAIL);
+	while (*arg)
 	{
-		if (check_args(argv[i]) == FAIL)
-			return (error(ERR_ARG), FAIL);
-		i++;
+		if (*arg < '0' || *arg > '9')
+			return (FAIL);
+		nb = nb * 10 + (*arg - '0');
+		if (nb > INT_MAX)
+			return (FAIL);
+		arg++;
 	}
 	return (SUCCESS);
 }
