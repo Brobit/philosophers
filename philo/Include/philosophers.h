@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 11:16:18 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:41:43 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_philo
 	pthread_mutex_t					right_fork;
 	pthread_mutex_t					*left_fork;
 	t_param							*param;
-	pthread_t						*thread_philo;
+	pthread_t						thread_philo;
 }				t_philo;
 
 typedef struct s_info
@@ -78,5 +78,9 @@ int							check_args(char *arg);
 
 int							init_param(t_info *info, int argc, char **argv);
 int							init_philo(t_info *info);
+
+/* free_structure.c */
+
+void						free_structure(t_info *info);
 
 #endif // !PHILOSOPHERS_H

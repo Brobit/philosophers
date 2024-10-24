@@ -12,7 +12,8 @@ SOURCES = ./Sources/philosophers.c\
 		  ./Sources/ft_atoll.c\
 		  ./Sources/writing.c\
 		  ./Sources/arg_checker.c\
-		  ./Sources/initializer.c
+		  ./Sources/initializer.c\
+		  ./Sources/free_structure.c
 
 OBJS = ${SOURCES:.c=.o}
 
