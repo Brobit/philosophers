@@ -6,14 +6,14 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/23 14:53:36 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:16:18 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-# include <bits/pthreadtypes.h>
+// # include <bits/pthreadtypes.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -29,6 +29,7 @@
 # define INT_MAX			2147483647
 
 # define ERR_ARG			"There is an invalid argument"
+# define ERR_INIT			"An error occur while initialize the structure"
 
 typedef long long	t_ll;
 
@@ -40,7 +41,8 @@ typedef struct s_param
 	int								time_to_sleep;
 	int								nb_of_meal;
 	int								nb_of_philo_who_finish;
-	pthread_mutex_t					is_someone_dead;
+	// pthread_mutex_t					is_someone_dead;
+	_Atomic int						is_someone_dead;
 }				t_param;
 
 typedef struct s_philo
@@ -49,10 +51,16 @@ typedef struct s_philo
 	int								nb_meal_eat;
 	long long						time_since_last_eat_in_ms;
 	pthread_mutex_t					right_fork;
-	pthread_mutex_t					left_fork;
+	pthread_mutex_t					*left_fork;
 	t_param							*param;
 	pthread_t						*thread_philo;
 }				t_philo;
+
+typedef struct s_info
+{
+	t_param							*param;
+	t_philo							**philo;
+}				t_info;
 
 /* ft_atoll.c */
 t_ll						ft_atoll(const char *string);
@@ -65,5 +73,10 @@ void						error(char *str);
 /* arg_checker.c */
 
 int							check_args(char *arg);
+
+/* initilizer.c */
+
+int							init_param(t_info *info, int argc, char **argv);
+int							init_philo(t_info *info);
 
 #endif // !PHILOSOPHERS_H

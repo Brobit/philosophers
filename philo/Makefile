@@ -2,7 +2,7 @@ NAME = philo
 
 CC = cc
 
-COMPILATION_FLAG = "-Wall -Wextra -Werror -g"
+COMPILATION_FLAG = -Wall -Wextra -Werror -g
 
 LIB = -lpthread
 
@@ -11,7 +11,8 @@ INCLUDES = -I ./Include/
 SOURCES = ./Sources/philosophers.c\
 		  ./Sources/ft_atoll.c\
 		  ./Sources/writing.c\
-		  ./Sources/arg_checker.c
+		  ./Sources/arg_checker.c\
+		  ./Sources/initializer.c
 
 OBJS = ${SOURCES:.c=.o}
 
@@ -21,7 +22,7 @@ ${NAME} : ${OBJS}
 	${CC} ${COMPILATION_FLAG} ${OBJS} -o $@ ${LIB}
 
 %.o : %.c
-	${CC} ${COMPILATION_FLAG} ${INCLUDES} -c %< -o $@
+	${CC} ${COMPILATION_FLAG} ${INCLUDES} -c $< -o $@
 
 clean :
 	${RM} ${OBJS}
