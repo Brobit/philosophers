@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 11:41:43 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:41:16 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_param
 	int								time_to_sleep;
 	int								nb_of_meal;
 	int								nb_of_philo_who_finish;
+	long							start_time_of_simu;
 	// pthread_mutex_t					is_someone_dead;
 	_Atomic int						is_someone_dead;
 }				t_param;
@@ -82,5 +83,17 @@ int							init_philo(t_info *info);
 /* free_structure.c */
 
 void						free_structure(t_info *info);
+
+/* simulation_entry.c */
+
+void						simulation_entry(t_info *info);
+
+/* time.c */
+
+long						get_time_in_ms(void);
+
+/* routine.c */
+
+void						*start_routine(void	*arg);
 
 #endif // !PHILOSOPHERS_H

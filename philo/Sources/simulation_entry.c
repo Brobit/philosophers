@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   simulation_entry.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:39:47 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 13:21:13 by almarico         ###   ########.fr       */
+/*   Created: 2024/10/24 13:16:20 by almarico          #+#    #+#             */
+/*   Updated: 2024/10/25 13:43:15 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-int	main(int argc, char **argv)
+void	simulation_entry(t_info *info)
 {
-	t_info	info;
-	int		i;
+	int	i;
 
-	if (argc != 5 || argc != 6)
-		return (write_program_prompt(), FAIL);
-	i = 1;
-	while (i < argc)
+	info->param->start_time_of_simu = get_time_in_ms();
+	i = -1;
+	while (++i < info->param->nb_of_philo)
+		pthread_create(&info->philo[i]->thread_philo, NULL, \
+				start_routine, info->philo[i]);
+	while (/*simulation doesn't end*/)
 	{
-		if (check_args(argv[i]) == FAIL)
-			return (error(ERR_ARG), FAIL);
-		i++;
+		check_meal_nb(info);
+		check_death(info);
+		usleep(1000);
 	}
-	if (init_param(&info, argc, argv) == FAIL || init_philo(&info) == FAIL)
-		return (error(ERR_INIT), FAIL);
-	simulation_entry(&info);
-	free_structure(&info);
-	return (SUCCESS);
+	// join / detach all the threads
 }

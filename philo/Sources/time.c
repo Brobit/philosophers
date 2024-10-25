@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:39:47 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 13:21:13 by almarico         ###   ########.fr       */
+/*   Created: 2024/10/24 13:32:16 by almarico          #+#    #+#             */
+/*   Updated: 2024/10/24 13:39:44 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-int	main(int argc, char **argv)
+long	get_time_in_ms(void)
 {
-	t_info	info;
-	int		i;
+	struct timeval	tv;
 
-	if (argc != 5 || argc != 6)
-		return (write_program_prompt(), FAIL);
-	i = 1;
-	while (i < argc)
-	{
-		if (check_args(argv[i]) == FAIL)
-			return (error(ERR_ARG), FAIL);
-		i++;
-	}
-	if (init_param(&info, argc, argv) == FAIL || init_philo(&info) == FAIL)
-		return (error(ERR_INIT), FAIL);
-	simulation_entry(&info);
-	free_structure(&info);
-	return (SUCCESS);
+	if (gettimeofday(&tv, NULL) == -1)
+		return (0);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }

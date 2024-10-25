@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:39:47 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 13:21:13 by almarico         ###   ########.fr       */
+/*   Created: 2024/10/24 13:41:16 by almarico          #+#    #+#             */
+/*   Updated: 2024/10/25 13:34:01 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-int	main(int argc, char **argv)
+void	*start_routine(void	*arg)
 {
-	t_info	info;
-	int		i;
+	t_philo	*philo;
 
-	if (argc != 5 || argc != 6)
-		return (write_program_prompt(), FAIL);
-	i = 1;
-	while (i < argc)
+	philo = (t_philo *)arg; 
+	if (philo->param->nb_of_philo == 1)
+		simu_one_philo(philo);
+	else
 	{
-		if (check_args(argv[i]) == FAIL)
-			return (error(ERR_ARG), FAIL);
-		i++;
+		while (/*simu doesn't end*/)
+		{
+			philo_eating(philo);
+			philo_sleeping(philo);
+			philo_thinking(philo);
+		}
 	}
-	if (init_param(&info, argc, argv) == FAIL || init_philo(&info) == FAIL)
-		return (error(ERR_INIT), FAIL);
-	simulation_entry(&info);
-	free_structure(&info);
-	return (SUCCESS);
+	return (NULL);
 }

@@ -106,6 +106,6 @@ fork state with a mutex for each of them
     - while simulation isn't finish
         - check the nb of meal they have take 
         - check if a philo is dead
-        - wait for 1 sec
+        - wait for 10ms
     - once it's finish, join all the threads
 - free all the malloc

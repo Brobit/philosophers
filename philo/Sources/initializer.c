@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:06:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 11:28:28 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:31:08 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	init_param(t_info *info, int argc, char **argv)
 	else
 		info->param->nb_of_meal = -1;
 	info->param->nb_of_philo_who_finish = 0;
+	info->param->start_time_of_simu = 0;
 	info->param->is_someone_dead = FALSE;
 	return (SUCCESS);
 }
