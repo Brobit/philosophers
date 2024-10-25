@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:41:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/25 13:34:01 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:18:15 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*start_routine(void	*arg)
 		simu_one_philo(philo);
 	else
 	{
-		while (/*simu doesn't end*/)
+		while (end_of_simulation(philo->param) == FALSE)
 		{
 			philo_eating(philo);
 			philo_sleeping(philo);
