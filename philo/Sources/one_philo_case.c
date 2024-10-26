@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   one_philo_case.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 13:41:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/26 14:32:02 by almarico         ###   ########.fr       */
+/*   Created: 2024/10/26 14:28:59 by almarico          #+#    #+#             */
+/*   Updated: 2024/10/26 14:29:39 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-void	*start_routine(void	*arg)
+void	simu_one_philo(t_philo *philo)
 {
-	t_philo	*philo;
 
-	philo = (t_philo *)arg;
-	if (philo->param->nb_of_philo == 1)
-		simu_one_philo(philo);
-	else
-	{
-		while (end_of_simulation(philo->param) == FALSE)
-		{
-			philo_eating(philo);
-			philo_sleeping(philo);
-			philo_thinking(philo);
-		}
-	}
-	return (NULL);
 }

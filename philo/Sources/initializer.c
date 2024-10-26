@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:06:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 13:31:08 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:17:01 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	init_param(t_info *info, int argc, char **argv)
 	info->param->time_to_die = ft_atoll(argv[2]);
 	info->param->time_to_eat = ft_atoll(argv[3]);
 	info->param->time_to_sleep = ft_atoll(argv[4]);
+	info->param->time_to_think = 1;
 	if (argc == 6)
 		info->param->nb_of_meal = ft_atoll(argv[5]);
 	else
@@ -40,7 +41,11 @@ static void	fill_philo(t_info *info)
 	{
 		info->philo[i]->id = i + 1;
 		info->philo[i]->nb_meal_eat = 0;
-		info->philo[i]->time_since_last_eat_in_ms = 0;
+		info->philo[i]->time_since_last_meal_in_ms = 0;
+		if (i < info->param->nb_of_philo - 1)
+			info->philo[i]->left_fork = &info->philo[0]->right_fork;
+		else
+			info->philo[i]->left_fork = &info->philo[i + 1]->right_fork;
 		pthread_mutex_init(&info->philo[i]->right_fork, NULL);
 		pthread_mutex_init(info->philo[i]->left_fork, NULL);
 		info->philo[i]->param = info->param;

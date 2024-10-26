@@ -16,7 +16,11 @@ SOURCES = ./Sources/philosophers.c\
 		  ./Sources/free_structure.c\
 		  ./Sources/simulation_entry.c\
 		  ./Sources/time.c\
-		  ./Sources/routine.c
+		  ./Sources/routine.c\
+		  ./Sources/simulation_checking.c\
+		  ./Sources/routine_actions.c\
+		  ./Sources/one_philo_case.c\
+		  ./Sources/display_message.c
 
 OBJS = ${SOURCES:.c=.o}
 

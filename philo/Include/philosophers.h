@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/25 13:41:16 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:27:08 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ typedef struct s_param
 	int								time_to_die;
 	int								time_to_eat;
 	int								time_to_sleep;
+	int								time_to_think;
 	int								nb_of_meal;
-	int								nb_of_philo_who_finish;
+	_Atomic int						nb_of_philo_who_finish;
 	long							start_time_of_simu;
 	// pthread_mutex_t					is_someone_dead;
 	_Atomic int						is_someone_dead;
@@ -50,7 +51,7 @@ typedef struct s_philo
 {
 	int								id;
 	int								nb_meal_eat;
-	long long						time_since_last_eat_in_ms;
+	long long						time_since_last_meal_in_ms;
 	pthread_mutex_t					right_fork;
 	pthread_mutex_t					*left_fork;
 	t_param							*param;
@@ -95,5 +96,29 @@ long						get_time_in_ms(void);
 /* routine.c */
 
 void						*start_routine(void	*arg);
+
+/* simulation_checking.c */
+
+int							end_of_simulation(t_param *param);
+void						check_meal_nb(t_info *info);
+void						check_death(t_info *info);
+
+/* routine_actions.c */
+
+void						philo_eating(t_philo *philo);
+void						philo_sleeping(t_philo *philo);
+void						philo_thinking(t_philo *philo);
+
+/* one_philo_case.c */
+
+void						simu_one_philo(t_philo *philo);
+
+/* display_message.c */
+
+void						display_fork(t_philo *philo);
+void						display_eating(t_philo *philo);
+void						display_sleeping(t_philo *philo);
+void						display_thinking(t_philo *philo);
+void						display_death(t_philo *philo);
 
 #endif // !PHILOSOPHERS_H
