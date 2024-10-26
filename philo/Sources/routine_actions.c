@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:27:09 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/26 15:35:29 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:46:29 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	philo_eating(t_philo *philo)
 		display_fork(philo);
 		display_eating(philo);
 		usleep(time_to_wait);
-		philo->time_since_last_meal_in_ms = 0;
+		philo->time_of_last_meal_in_ms = get_time_in_ms();
 		pthread_mutex_unlock(&philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
 	}
@@ -35,7 +35,7 @@ void	philo_eating(t_philo *philo)
 		display_fork(philo);
 		display_eating(philo);
 		usleep(time_to_wait);
-		philo->time_since_last_meal_in_ms = 0;
+		philo->time_of_last_meal_in_ms = get_time_in_ms();
 		pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(&philo->right_fork);
 	}

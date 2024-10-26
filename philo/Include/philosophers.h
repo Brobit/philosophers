@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/26 15:27:08 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:43:55 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_philo
 {
 	int								id;
 	int								nb_meal_eat;
-	long long						time_since_last_meal_in_ms;
+	long long						time_of_last_meal_in_ms;
 	pthread_mutex_t					right_fork;
 	pthread_mutex_t					*left_fork;
 	t_param							*param;
