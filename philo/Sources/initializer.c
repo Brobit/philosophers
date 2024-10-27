@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:06:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/26 15:45:34 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:06:50 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	init_param(t_info *info, int argc, char **argv)
 	info->param->nb_of_philo_who_finish = 0;
 	info->param->start_time_of_simu = 0;
 	info->param->is_someone_dead = FALSE;
+	pthread_mutex_init(&info->param->display, NULL);
 	return (SUCCESS);
 }
 

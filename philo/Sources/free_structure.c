@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:31:51 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 11:43:46 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:08:13 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	free_param(t_info *info)
 {
+	pthread_mutex_destroy(&info->param->display);
 	free(info->param);
 	info->param = NULL;
 }

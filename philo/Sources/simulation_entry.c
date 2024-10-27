@@ -27,5 +27,9 @@ void	simulation_entry(t_info *info)
 		check_death(info);
 		usleep(1000);
 	}
-	// join / detach all the threads
+	i = -1;
+	while (++i < info->param->nb_of_philo)
+	{
+		pthread_join(info->philo[i]->thread_philo, NULL);
+	}
 }

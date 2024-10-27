@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/26 15:43:55 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:16:30 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 # define ERR_ARG			"There is an invalid argument"
 # define ERR_INIT			"An error occur while initialize the structure"
 
+# define RED				"\033[0;31m"
+# define GREEN				"\033[0;32m"
+# define YELLOW				"\033[0;33m"
+# define BLUE				"\033[0;34m"
+# define PURPLE				"\033[0;35m"
+# define CYAN				"\033[0;36m"
+# define RESET				"\033[0m"
+
 typedef long long	t_ll;
 
 typedef struct s_param
@@ -43,8 +51,8 @@ typedef struct s_param
 	int								nb_of_meal;
 	_Atomic int						nb_of_philo_who_finish;
 	long							start_time_of_simu;
-	// pthread_mutex_t					is_someone_dead;
 	_Atomic int						is_someone_dead;
+	pthread_mutex_t					display;
 }				t_param;
 
 typedef struct s_philo
