@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:02:53 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/22 11:32:34 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:48 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	check_args(char *arg)
 
 	if (!arg || *arg == '0' || *arg == '\0')
 		return (FAIL);
+	nb = 0;
 	while (*arg)
 	{
 		if (*arg < '0' || *arg > '9')

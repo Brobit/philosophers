@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 18:40:00 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/26 15:44:56 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:18:53 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ void	check_death(t_info *info)
 	while (i < info->param->nb_of_philo)
 	{
 		if ((get_time_in_ms() - info->philo[i]->time_of_last_meal_in_ms) \
-			> info->param->time_to_die)
+			>= info->param->time_to_die)
+		{
 			info->param->is_someone_dead = TRUE;
+			display_death(info->philo[i]);
+		}
 		i++;
 	}
 }

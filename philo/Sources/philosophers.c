@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:39:47 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/24 13:21:13 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:25:59 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_info	info;
 	int		i;
 
-	if (argc != 5 || argc != 6)
+	if (argc < 5 || argc > 6)
 		return (write_program_prompt(), FAIL);
 	i = 1;
 	while (i < argc)
