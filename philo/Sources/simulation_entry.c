@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:16:20 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/28 11:55:10 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:05:12 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ void	simulation_entry(t_info *info)
 	}
 	i = -1;
 	while (++i < info->param->nb_of_philo)
-	{
 		pthread_join(info->philo[i]->thread_philo, NULL);
-	}
 }

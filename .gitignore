@@ -1,6 +1,7 @@
 # exectuable
 a.out
 # philo
+philo/philo
 
 # object file
 *.o
