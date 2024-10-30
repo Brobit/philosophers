@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:37:01 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/27 17:16:30 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:01:25 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ typedef struct s_param
 	long							start_time_of_simu;
 	_Atomic int						is_someone_dead;
 	pthread_mutex_t					display;
+	pthread_mutex_t					check_end;
+	pthread_mutex_t					check_meal;
+	pthread_mutex_t					check_death;
+	pthread_mutex_t					writing;
 }				t_param;
 
 typedef struct s_philo

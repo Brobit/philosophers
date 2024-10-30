@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:41:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/28 11:50:57 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:00:04 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*start_routine(void	*arg)
 	philo = (t_philo *)arg;
 	if (philo->param->nb_of_philo == 1)
 		simu_one_philo(philo);
-	// if (philo->id % 2 == 1)
-	// 	usleep(60);
+	if (philo->id % 2 == 1)
+		usleep(philo->param->time_to_eat * 1000);
 	while (end_of_simulation(philo->param) == FALSE)
 	{
 		philo_eating(philo);

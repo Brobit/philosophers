@@ -6,11 +6,12 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:27:09 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/29 11:15:51 by almarico         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:02:57 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
+#include <pthread.h>
 
 static void	fork_taking(t_philo *philo)
 {
@@ -32,14 +33,25 @@ void	philo_eating(t_philo *philo)
 {
 	long	time_to_wait;
 
-	fork_taking(philo);
-	time_to_wait = philo->param->time_to_eat * 1000;
-	display_eating(philo);
-	usleep(time_to_wait);
-	philo->nb_meal_eat++;
-	philo->time_of_last_meal_in_ms = get_time_in_ms();
-	pthread_mutex_unlock(&philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
+	if ((get_time_in_ms() - philo->time_of_last_meal_in_ms) \
+		>= philo->param->time_to_die)
+	{
+		philo->param->is_someone_dead = TRUE;
+		display_death(philo);
+	}
+	if (end_of_simulation(philo->param) == FALSE)
+	{
+		fork_taking(philo);
+		display_eating(philo);
+		pthread_mutex_lock(&philo->param->writing);
+		time_to_wait = philo->param->time_to_eat * 1000;
+		philo->nb_meal_eat++;
+		philo->time_of_last_meal_in_ms = get_time_in_ms();
+		usleep(time_to_wait);
+		pthread_mutex_unlock(&philo->param->writing);
+		pthread_mutex_unlock(&philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
 }
 
 void	philo_sleeping(t_philo *philo)
