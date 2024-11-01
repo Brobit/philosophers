@@ -2,7 +2,7 @@ NAME = philo
 
 CC = cc
 
-COMPILATION_FLAG = -Wall -Wextra -Werror -g
+COMPILATION_FLAG = -Wall -Wextra -Werror -g #-fsanitize=thread
 
 LIB = -lpthread
 

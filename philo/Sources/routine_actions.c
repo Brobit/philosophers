@@ -6,12 +6,11 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:27:09 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/30 17:02:57 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:22:03 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
-#include <pthread.h>
 
 static void	fork_taking(t_philo *philo)
 {
@@ -43,12 +42,10 @@ void	philo_eating(t_philo *philo)
 	{
 		fork_taking(philo);
 		display_eating(philo);
-		pthread_mutex_lock(&philo->param->writing);
 		time_to_wait = philo->param->time_to_eat * 1000;
 		philo->nb_meal_eat++;
 		philo->time_of_last_meal_in_ms = get_time_in_ms();
 		usleep(time_to_wait);
-		pthread_mutex_unlock(&philo->param->writing);
 		pthread_mutex_unlock(&philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
 	}

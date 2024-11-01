@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:16:20 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/30 11:37:23 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:33:08 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	simulation_entry(t_info *info)
 	{
 		check_meal_nb(info);
 		check_death(info);
-		// usleep(10);
 	}
 	i = -1;
 	while (++i < info->param->nb_of_philo)

@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:06:16 by almarico          #+#    #+#             */
-/*   Updated: 2024/10/30 17:01:36 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:21:42 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ int	init_param(t_info *info, int argc, char **argv)
 	info->param->start_time_of_simu = get_time_in_ms();
 	info->param->is_someone_dead = FALSE;
 	pthread_mutex_init(&info->param->display, NULL);
-	pthread_mutex_init(&info->param->check_end, NULL);
-	pthread_mutex_init(&info->param->check_meal, NULL);
-	pthread_mutex_init(&info->param->check_death, NULL);
-	pthread_mutex_init(&info->param->writing, NULL);
 	return (SUCCESS);
 }
 
