@@ -42,7 +42,7 @@ void	check_death(t_info *info)
 	while (i < info->param->nb_of_philo)
 	{
 		if ((get_time_in_ms() - info->philo[i]->time_of_last_meal_in_ms) \
-			>= info->param->time_to_die)
+			>= info->param->time_to_die && info->param->is_someone_dead == FALSE)
 		{
 			info->param->is_someone_dead = TRUE;
 			display_death(info->philo[i]);

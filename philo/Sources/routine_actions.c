@@ -33,12 +33,12 @@ void	philo_eating(t_philo *philo)
 	long	time_to_wait;
 
 	if ((get_time_in_ms() - philo->time_of_last_meal_in_ms) \
-		>= philo->param->time_to_die)
+		>= philo->param->time_to_die && philo->param->is_someone_dead == FALSE)
 	{
 		philo->param->is_someone_dead = TRUE;
 		display_death(philo);
 	}
-	if (end_of_simulation(philo->param) == FALSE)
+	if (philo->param->is_someone_dead == FALSE)
 	{
 		fork_taking(philo);
 		display_eating(philo);
