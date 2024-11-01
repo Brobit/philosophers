@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:20:30 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/01 15:07:46 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:26:45 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	display_fork(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->param->display);
 		printf("%s", GREEN);
-		printf("%ld : philo %d has taken a fork\n", \
-		get_time_in_ms() - philo->param->start_time_of_simu, philo->id);
 		printf("%ld : philo %d has taken a fork\n", \
 		get_time_in_ms() - philo->param->start_time_of_simu, philo->id);
 		printf("%s", RESET);

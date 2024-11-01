@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:27:09 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/01 13:22:03 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:26:59 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static void	fork_taking(t_philo *philo)
 	if (philo->id % 2 == 1)
 	{
 		pthread_mutex_lock(&philo->right_fork);
+		display_fork(philo);
 		pthread_mutex_lock(philo->left_fork);
 		display_fork(philo);
 	}
 	else
 	{
 		pthread_mutex_lock(philo->left_fork);
+		display_fork(philo);
 		pthread_mutex_lock(&philo->right_fork);
 		display_fork(philo);
 	}
